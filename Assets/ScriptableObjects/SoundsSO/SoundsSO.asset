@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d731af278166743bad82bc6df2675c, type: 3}
+  m_Name: SoundsSO
+  m_EditorClassIdentifier: 
+  dolapKapagiAc:
+  - {fileID: 8300000, guid: 113447ebd2917d84683995ab5b7b40a4, type: 3}
+  dolapKapagiKapa:
+  - {fileID: 8300000, guid: bfd22afe7336f8c47912624f6a71a562, type: 3}
+  domatesKesme:
+  - {fileID: 8300000, guid: 097121d22cfe5a2489082b6583531bf5, type: 3}
+  - {fileID: 8300000, guid: 189d789d1156dd84ba42fabe44a21626, type: 3}
+  - {fileID: 8300000, guid: fc582d12d6d855e45b485e0bfa3cf3b8, type: 3}
+  ekmekKesme:
+  - {fileID: 8300000, guid: d6bf9289c9547834fb19da072a9a7095, type: 3}
+  pickUp:
+  - {fileID: 8300000, guid: 668de61a04ca5914aa745f8712c62720, type: 3}
+  drop:
+  - {fileID: 8300000, guid: 9c88983fa5906dc41944ec5a43b6b5c7, type: 3}
+  frutozBasla:
+  - {fileID: 8300000, guid: 7e3273fa7221e9c45b89e3b5c68aa4e7, type: 3}
+  frutozBitis:
+  - {fileID: 8300000, guid: e88fe8d598e30044281479ed764e192a, type: 3}
+  frutozCalisma:
+  - {fileID: 8300000, guid: e01f7a9dcbc070948b75dbf50fa571d5, type: 3}
+  frutozTum:
+  - {fileID: 8300000, guid: 6394657a8a433af4b89189a2026f8a18, type: 3}
+  kizarmaSesi:
+  - {fileID: 8300000, guid: 95c7504492cd6224198abc9df3e7fd7c, type: 3}
+  marulKesme:
+  - {fileID: 8300000, guid: eff1d6c8c25fe7a4fab173cfdeaa0bfc, type: 3}
+  - {fileID: 8300000, guid: 6ec1cf61ca654f540ac28dade13a6879, type: 3}
+  - {fileID: 8300000, guid: ff600aaeb4602fa4d93837d658e79846, type: 3}
+  patatesDokme:
+  - {fileID: 8300000, guid: 8b6f3f2c419a99b479cc1b01e2090eae, type: 3}
+  soganKesme:
+  - {fileID: 8300000, guid: 93af59f6ea4de0249b0bcf55e2f4eb82, type: 3}
+  - {fileID: 8300000, guid: d8663d1ff7c40354bbd1da30de201c6e, type: 3}
+  - {fileID: 8300000, guid: 8e2c363ca2327c14e895e4536ab6cc01, type: 3}
+  - {fileID: 8300000, guid: d383bb22138abe0478c4195b6307a286, type: 3}
+  deliveryFail:
+  - {fileID: 8300000, guid: 400611abd7434234993616a86c030d1e, type: 3}
+  - {fileID: 8300000, guid: 6a936576e1e30a640844535c71d5a149, type: 3}
+  deliverySuccess:
+  - {fileID: 8300000, guid: 50205ffe58351d244bbcbd725dbfa802, type: 3}
+  - {fileID: 8300000, guid: 4b22bfbdbacfa0445bc9bbfbb0141085, type: 3}
+  copAtma:
+  - {fileID: 8300000, guid: 4b70ec0f0afb9ac4ea7dfea07aca4eb4, type: 3}
+  - {fileID: 8300000, guid: 6024ba1d53d005f48a96b3a9f6bacedd, type: 3}

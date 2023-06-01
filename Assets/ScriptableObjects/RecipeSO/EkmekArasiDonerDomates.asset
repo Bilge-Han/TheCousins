@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6ca7654bc93e34c99a9e0eb1c551d5, type: 3}
+  m_Name: EkmekArasiDonerDomates
+  m_EditorClassIdentifier: 
+  kitchenObjectSOList:
+  - {fileID: 11400000, guid: 68affa6df87f4554f8be22db85e1719b, type: 2}
+  - {fileID: 11400000, guid: 07af75ca0d4acb14aba625089b2ab2d5, type: 2}
+  - {fileID: 11400000, guid: 32224bcd0f62a2e4088c3184a4d69d3b, type: 2}
+  - {fileID: 11400000, guid: 9ce249c9e2f5f444d8655da1e4c68dc9, type: 2}
+  recipeName: Ekmek Arasi Doner Domates Ayran
