@@ -36,14 +36,14 @@ public class DonerCounter : BaseCounter, IHasProgress
             CuttingRecipeSO cuttingRecipeSO = cuttingRecipeSOArray[0];
         if (!player.HasKitchenObject())
         {
-            if (donersSpawnedAmount > 0)
-            {
-                donersSpawnedAmount--;
-                porsiyonDonerFried--;
-                KitchenObject.SpawnKitchenObject(cuttingRecipeSO.output, player);
+            //if (donersSpawnedAmount > 0)
+            //{
+            //    donersSpawnedAmount--;
+            //    porsiyonDonerFried--;
+            //    KitchenObject.SpawnKitchenObject(cuttingRecipeSO.output, player);
 
-                OnDonerRemoved?.Invoke(this, EventArgs.Empty);
-            }
+            //    OnDonerRemoved?.Invoke(this, EventArgs.Empty);
+            //}
         }
         if (HasKitchenObject())
         {
