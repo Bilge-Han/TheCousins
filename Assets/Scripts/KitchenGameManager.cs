@@ -37,7 +37,6 @@ public class KitchenGameManager : MonoBehaviour
 
     private void Instance_OnPauseAction(object sender, EventArgs e)
     {
-
         TogglePauseGame();
     }
 
@@ -91,19 +90,24 @@ public class KitchenGameManager : MonoBehaviour
     {
         return 1-(gamePlayingTimer / gamePlayingTimerMax);
     }
+    public bool GetIsPlaying()
+    {
+        return isGamePaused;
+    }
     public void TogglePauseGame()
     {
         isGamePaused = !isGamePaused;
         if (isGamePaused)
         {
+            FrutozAudioManager.Instance.PauseFrutozAudio();
             Time.timeScale = 0f;
             OnGamePaused?.Invoke(this, EventArgs.Empty);
         }
         else
         {
+            FrutozAudioManager.Instance.UnPauseFrutozAudio();
             Time.timeScale = 1f;
             OnGameUnPaused?.Invoke(this, EventArgs.Empty);
         }
-        
     }
 }

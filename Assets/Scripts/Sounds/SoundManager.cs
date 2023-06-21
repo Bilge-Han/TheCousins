@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
 
 
     private float volume=1f;
+
     private void Awake()
     {
         Instance = this;
@@ -30,6 +31,7 @@ public class SoundManager : MonoBehaviour
         BaseCounter.OnAnyObjectPlacedHere += BaseCounter_OnAnyObjectPlacedHere;
         TrashCounter.OnAnyObjectTrashed += TrashCounter_OnAnyObjectTrashed;
         //potatoCounter.OnStatechanged += PotatoCounter_OnStatechanged;
+        
     }
     private void PlaySound(AudioClip[] audioClipArray, Vector3 position, float volume = 1f)
     {
