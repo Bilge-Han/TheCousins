@@ -77,7 +77,6 @@ public class CuttingCounter : BaseCounter, IHasProgress
         {
             //There is a KitchenObject here and it can be cut
             cuttingProgress++;
-
             OnCut?.Invoke(this, EventArgs.Empty);
             OnAnyCut?.Invoke(this, EventArgs.Empty);
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
@@ -92,7 +91,6 @@ public class CuttingCounter : BaseCounter, IHasProgress
 
                 KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
             }
-
         }
         else
         {

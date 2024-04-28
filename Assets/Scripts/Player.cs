@@ -18,7 +18,7 @@ using UnityEngine;
 //        clearConter.Interact();
 //    }
 //}
-public class Player : MonoBehaviour,IKitchenObjectParent
+public class Player : MonoBehaviour, IKitchenObjectParent
 {
     //public static Player instance;
     //public static Player Instance
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
     //{
     //    Player.instanceField = instanceField;
     //}
-    
+
 
     public static Player Instance { get; private set; }
 
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
     private KitchenObject kitchenObject;
     private void Awake()
     {
-        if (Instance!=null)
+        if (Instance != null)
         {
 
         }
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
     private void GameInput_OnIteractActionAlternate(object sender, EventArgs e)
     {
         if (!KitchenGameManager.Instance.IsGamePlaying()) return;
-        if (selectedCounter!=null)
+        if (selectedCounter != null)
         {
             selectedCounter.InteractAlternate(this);
         }
@@ -108,18 +108,18 @@ public class Player : MonoBehaviour,IKitchenObjectParent
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new(inputVector.x, 0f, inputVector.y);
-        if (moveDir!=Vector3.zero)
+        if (moveDir != Vector3.zero)
         {
             lastInteractDir = moveDir;
         }
         float interactDistance = 2f;
-        
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance,countersLayerMask))
+
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance, countersLayerMask))
         {
-            
+
             if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
-                if (baseCounter!=selectedCounter)
+                if (baseCounter != selectedCounter)
                 {
                     SetSelectedCounter(baseCounter);
                 }
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
 
             //only x hareket
             Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-            canMove = moveDir.x!=0&&!Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+            canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
 
             if (canMove)
             {
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
             {
                 //eðer sadece x de hareket edemiyorsak sadece z de hareket edeceðiz
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
-                canMove =moveDir.z!=0&& !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+                canMove = moveDir.z != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
                 if (canMove)
                 {
@@ -199,7 +199,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
-        if (kitchenObject!=null)
+        if (kitchenObject != null)
         {
             OnPickedSomething?.Invoke(this, EventArgs.Empty);
         }

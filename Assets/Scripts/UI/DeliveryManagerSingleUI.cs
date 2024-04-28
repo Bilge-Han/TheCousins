@@ -27,6 +27,7 @@ public class DeliveryManagerSingleUI : MonoBehaviour
             Transform iconTransform = Instantiate(iconTemplate, iconContainer);
             iconTransform.gameObject.SetActive(true); 
             iconTransform.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
+            iconTransform.GetComponent<Image>().enabled=true;
         }
     }
 }
