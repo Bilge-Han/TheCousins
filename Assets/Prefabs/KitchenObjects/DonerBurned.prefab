@@ -140,6 +140,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8429519474783777684}
   - component: {fileID: 1621347143478529794}
+  - component: {fileID: 7705562445672748525}
+  - component: {fileID: 3380854357080217657}
   m_Layer: 0
   m_Name: DonerBurned
   m_TagString: Untagged
@@ -176,3 +178,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitchenObjectSO: {fileID: 11400000, guid: 1be7b9f6064d4214bb1317a557fe05d0, type: 2}
+--- !u!114 &7705562445672748525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663365685624059541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &3380854357080217657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663365685624059541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6c97de0f0830140a733042949bba7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

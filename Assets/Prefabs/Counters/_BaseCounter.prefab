@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6602263681146138704}
   - component: {fileID: 6602263681146138705}
+  - component: {fileID: -7913398623795101347}
   m_Layer: 6
   m_Name: _BaseCounter
   m_TagString: Untagged
@@ -77,3 +78,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.458313, y: 1.5, z: 1.794117}
   m_Center: {x: -0.018324142, y: 0.9106237, z: -0.1987955}
+--- !u!114 &-7913398623795101347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602263681146138734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
