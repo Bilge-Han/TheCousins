@@ -15,6 +15,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public event EventHandler OnPlayerDataNetworkListChanged;
 
     [SerializeField] private KitchenObjectListSO kitchenObjectListSO;
+    [SerializeField] private List<GameObject> playerGameObjectVisualList;
 
     private NetworkList<PlayerData> playerDataNetworkList;
 
@@ -41,7 +42,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
     private void NetworkManager_OnClientConnectedCallback(ulong clientId)
     {
-        playerDataNetworkList.Add(new PlayerData { clientId = clientId, });
+        playerDataNetworkList.Add(new PlayerData { clientId = clientId, visualId = GetFirsUnusedVisualId(), }); ;
     }
 
     private void NetworkManager_ConnectionApprovalCallback(NetworkManager.ConnectionApprovalRequest connectionApprovalRequest, NetworkManager.ConnectionApprovalResponse connectionApprovalResponse)
@@ -132,8 +133,68 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     {
         return playerIndex < playerDataNetworkList.Count;
     }
+    public PlayerData GetPlayerDataFromClientId(ulong clientId)
+    {
+        foreach (PlayerData playerData in playerDataNetworkList)
+        {
+            if (playerData.clientId == clientId) { return playerData; }
+        }
+        return default;
+    }
+    public int GetPlayerDataIndexFromClientId(ulong clientId)
+    {
+        for (int i = 0; i < playerDataNetworkList.Count; i++)
+        {
+            if (playerDataNetworkList[i].clientId == clientId) { return i; }
+        }
+        return -1;
+    }
+    public PlayerData GetPlayerData()
+    {
+       return GetPlayerDataFromClientId(NetworkManager.Singleton.LocalClientId);
+    }
     public PlayerData GetPlayerDataFromPlayerIndex(int playerIndex)
     {
         return playerDataNetworkList[playerIndex];
+    }
+
+    public GameObject GetPlayerGameObjectVisual(int visualId)
+    {
+        return playerGameObjectVisualList[visualId];
+    }
+    public void ChangePlayerVisual(int visualId)
+    {
+        ChangePlayerVisualServerRpc(visualId);
+    }
+    [ServerRpc(RequireOwnership =false)]
+    private void ChangePlayerVisualServerRpc(int visualId,ServerRpcParams serverRpcParams = default)
+    {
+        if (!IsVisualAvailable(visualId)) { return; }
+
+        int playerDataIndex = GetPlayerDataIndexFromClientId(serverRpcParams.Receive.SenderClientId);
+        PlayerData playerData = playerDataNetworkList[playerDataIndex];
+        playerData.visualId = visualId;
+        playerDataNetworkList[playerDataIndex] = playerData;
+
+    }
+    private bool IsVisualAvailable(int visualId)
+    {
+        foreach (PlayerData playerData in playerDataNetworkList)
+        {
+            if (playerData.visualId == visualId)
+            {
+                //already in use 
+                return false;
+            }
+        }
+        return true;
+    }
+    private int GetFirsUnusedVisualId()
+    {
+        for (int i = 0; i < playerGameObjectVisualList.Count; i++)
+        {
+            if(IsVisualAvailable(i)) { return i; }
+        }
+        return -1;
     }
 }
