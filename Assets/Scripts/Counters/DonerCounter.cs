@@ -97,6 +97,7 @@ public class DonerCounter : BaseCounter, IHasProgress
     [ClientRpc]
     private void CutObjectClientRpc()
     {
+        // Client'ta hala animasyon oynuyoReee !!!!!!!!!!!!!!!
         cuttingProgressFried++;
         OnCut?.Invoke(this, EventArgs.Empty);
         OnAnyCut?.Invoke(this, EventArgs.Empty);

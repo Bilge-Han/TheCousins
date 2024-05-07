@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Ayran
   m_EditorClassIdentifier: 
   prefab: {fileID: 8429519474783777684, guid: 2b4e1b3669c19284b8daeee4fbcb7678, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 67c3c6177b71f6643bc4654dcea90508, type: 3}
   objectName: Ayran

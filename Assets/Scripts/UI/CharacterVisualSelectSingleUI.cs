@@ -32,4 +32,8 @@ public class CharacterVisualSelectSingleUI : MonoBehaviour
         if (KitchenGameMultiplayer.Instance.GetPlayerData().visualId == visualId) {selectedGameObject.SetActive(true); }
         else { selectedGameObject.SetActive(false); }
     }
+    private void OnDestroy()
+    {
+        KitchenGameMultiplayer.Instance.OnPlayerDataNetworkListChanged -= KitchenGameMultiplayer_OnPlayerDataNetworkListChanged;
+    }
 } 

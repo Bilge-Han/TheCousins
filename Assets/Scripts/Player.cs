@@ -73,7 +73,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     {
         if (IsOwner) { LocalInstance = this; }
 
-        transform.position = spawnPositionList[(int)OwnerClientId];
+        transform.position = spawnPositionList[KitchenGameMultiplayer.Instance.GetPlayerDataIndexFromClientId(OwnerClientId)];
 
         OnAnyPlayerSpawned?.Invoke(this, EventArgs.Empty);
 
@@ -120,6 +120,7 @@ public class Player : NetworkBehaviour, IKitchenObjectParent
     }
     private void HandleInteractions()
     {
+        // KARAKTER ELÝNE BÝRÞEY ALINCA VEYA BIRAKINCA ROTATÝON 0'LANIYOR ÇÖZ !!!!!!!!!!!!!!!!!!!
         Vector2 inputVector = GameInput.Instance.GetMovementVectorNormalized();
         Vector3 moveDir = new(inputVector.x, 0f, inputVector.y);
         if (moveDir != Vector3.zero)
