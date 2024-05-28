@@ -121,8 +121,7 @@ public class PotatoCounter : BaseCounter, IHasProgress
                     //Oyuncu elinde kýzarabilecek bir þey taþýyor.
                     KitchenObject kitchenObject = player.GetKitchenObject();
                     kitchenObject.SetKitchenObjectParent(this);
-                    InteractLogicPlaceObjectOnCounterServerRpc(
-                        );
+                    InteractLogicPlaceObjectOnCounterServerRpc();
                     KitchenObject.DestroyKitchenObject(kitchenObject);
 
                     KitchenObject.SpawnKitchenObject(potatoSlicedSO, this);
@@ -140,7 +139,7 @@ public class PotatoCounter : BaseCounter, IHasProgress
             if (player.HasKitchenObject())
             {
                 //Oyuncunun elinde obje var
-                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)&&state.Value==State.Fried)
                 {
                     //Oyuncunun elindeki obje -TABAK
                     plateKitchenObject = player.GetKitchenObject() as PlateKitchenObject;

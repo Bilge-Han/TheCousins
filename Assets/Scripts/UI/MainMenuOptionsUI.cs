@@ -1,13 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
-public class OptionsUI : MonoBehaviour
+public class MainMenuOptionsUI : MonoBehaviour
 {
-    public static OptionsUI Instance { get; private set; }
+    public static MainMenuOptionsUI Instance { get; private set; }
 
     [SerializeField] private Button soundEffectsButton;
     [SerializeField] private Button musicButton;
@@ -31,7 +31,7 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private Transform pressToRebindKeyTransform;
     [SerializeField] private Dropdown graphicsDropdown;
 
-    private Action onCloseButtonAction;
+
     private void Awake()
     {
         Instance = this;
@@ -50,7 +50,6 @@ public class OptionsUI : MonoBehaviour
         closeButton.onClick.AddListener(() =>
         {
             Hide();
-            onCloseButtonAction(); //close butona basýnca bu action çalýþacak bunu da show func'a gamepausedui'dan atýyoruz.
         });
 
 
@@ -82,26 +81,22 @@ public class OptionsUI : MonoBehaviour
         {
             RebindBinding(GameInput.Binding.Pause);
         });
-
+        // Dropdown deðiþikliði dinlemek için
         graphicsDropdown.onValueChanged.AddListener(delegate {
             OnGraphicsChange(graphicsDropdown);
         });
 
+
     }
     private void Start()
     {
-        KitchenGameManager.Instance.OnLocalGameUnPaused += KitchenGameManager_OnGameUnPaused;
+        UpdateVisual();
         UpdateDropdownOptions();
         LoadGraphicsSettings();
-        UpdateVisual();
         HidePressToRebindKey();
         Hide();
     }
 
-    private void KitchenGameManager_OnGameUnPaused(object sender, System.EventArgs e)
-    {
-        Hide();
-    }
     void OnGraphicsChange(Dropdown dropdown)
     {
         QualitySettings.SetQualityLevel(dropdown.value);
@@ -125,8 +120,8 @@ public class OptionsUI : MonoBehaviour
     }
     private void UpdateVisual()
     {
-        soundEffectsText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
-        musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+        //soundEffectsText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
+        //musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
 
         moveUpText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Up);
         moveDownText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Down);
@@ -137,12 +132,7 @@ public class OptionsUI : MonoBehaviour
         pauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
-    public void Show(Action onCloseButtonAction)
-    {
-        this.onCloseButtonAction = onCloseButtonAction; 
-        gameObject.SetActive(true);
-    }
-    public void MainShow()
+    public void Show()
     {
         gameObject.SetActive(true);
     }
