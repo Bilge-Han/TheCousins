@@ -81,7 +81,7 @@ public class DonerCounter : BaseCounter, IHasProgress
     public override void InteractAlternate(Player player)
     {
         #region Doner Spawn Control
-        if (!player.HasKitchenObject() && porsiyonDonerFried < 3)
+        if (!player.HasKitchenObject() && donersSpawnedAmount < 1)
         {
             //CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
             CutObjectServerRpc();
@@ -98,14 +98,18 @@ public class DonerCounter : BaseCounter, IHasProgress
     private void CutObjectClientRpc()
     {
         // Client'ta hala animasyon oynuyoReee !!!!!!!!!!!!!!!
-        cuttingProgressFried++;
-        OnCut?.Invoke(this, EventArgs.Empty);
-        OnAnyCut?.Invoke(this, EventArgs.Empty);
-        CuttingRecipeSO cuttingRecipeSO = cuttingRecipeSOArray[0];
-        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+        // Hostlayanda 1 kere kesiliyo ama baðlananda 1'den fazla kesilebiliyor.
+        if (donersSpawnedAmount < donersSpawnedAmountMax)
         {
-            progressNormalized = (float)cuttingProgressFried / cuttingRecipeSO.cuttingProgressMax
-        });
+            cuttingProgressFried++;
+            OnCut?.Invoke(this, EventArgs.Empty);
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
+            CuttingRecipeSO cuttingRecipeSO = cuttingRecipeSOArray[0];
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+            {
+                progressNormalized = (float)cuttingProgressFried / cuttingRecipeSO.cuttingProgressMax
+            });
+        }
     }
     [ServerRpc(RequireOwnership = false)]
     private void TestCuttingProgressServerRpc()
@@ -117,7 +121,7 @@ public class DonerCounter : BaseCounter, IHasProgress
             if (donersSpawnedAmount < donersSpawnedAmountMax)
             {
                 KitchenObjectSO outputKitchenObjectSO = cuttingRecipeSOArray[0].output;
-                KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+                KitchenObject.SpawnKitchenObject(outputKitchenObjectSO,this);
                 cuttingProgressFried = 0;
 
                 donersSpawnedAmount++;
@@ -128,7 +132,7 @@ public class DonerCounter : BaseCounter, IHasProgress
                     progressNormalized = (float)cuttingProgressFried / cuttingRecipeSO.cuttingProgressMax
                 });
             }
-            porsiyonDonerFried++;
+            //porsiyonDonerFried++;
         }
     }
 

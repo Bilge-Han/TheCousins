@@ -39,9 +39,9 @@ public class DonerCounterVisual : MonoBehaviour
 
     private void DonerCounter_OnDonerSpawned(object sender, System.EventArgs e)
     {
-            Transform donerVisualTransform = Instantiate(donerVisualPrefab, donerSpawnedPoint);
-            float donerOffSetY = .1f;
-            donerVisualTransform.localPosition = new Vector3(0, 0, donerOffSetY * donerVisualGameObjectList.Count);
-            donerVisualGameObjectList.Add(donerVisualTransform.gameObject);   
+        Transform donerVisualTransform = Instantiate(donerVisualPrefab, donerSpawnedPoint);
+        float donerOffSetY = .1f;
+        donerVisualTransform.localPosition = new Vector3(0, 0, donerOffSetY * donerVisualGameObjectList.Count);
+        donerVisualGameObjectList.Add(donerVisualTransform.gameObject);
     }
 }
