@@ -100,6 +100,7 @@ public class DeliveryManager : NetworkBehaviour
     [ClientRpc]
     private void DeliverIncorrectRecipeClientRpc() {
         OnRecipeFailed?.Invoke(this, EventArgs.Empty);
+        KitchenGameManager.Instance.SubtractGamePlayingTime();
     }
     [ServerRpc(RequireOwnership = false)]
     private void DeliverCorrectRecipeServerRpc(int waitingRecipeSOListIndex) {
@@ -111,6 +112,7 @@ public class DeliveryManager : NetworkBehaviour
         waitingRecipeSOList.RemoveAt(waitingRecipeSOListIndex);
         OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
         OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+        KitchenGameManager.Instance.AddGamePlayingTime();
     }
     public List<RecipeSO> GetWaitingRecipeSOList()
     {
